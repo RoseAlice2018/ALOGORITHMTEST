@@ -12,3 +12,4 @@ struct Node{
     Node():value(0),next(nullptr){}
 };
 
+bool is

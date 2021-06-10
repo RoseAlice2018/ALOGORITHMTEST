@@ -46,7 +46,7 @@ class Node
     virtual void borrowFrom(Node* destNode, Node* parentNode, int keyIndex, SIBLING_DIRECTION d)=0; // 从兄弟结点中借一个键值
     virtual int getChildIndex(KeyType key,int keyIndex)const=0; //根据键值获取孩子节点指针下标
 
-    protected:
+    public:
         NodeKind kind;
         //关键字的数量
         int key_num;
@@ -70,7 +70,7 @@ class NormalNode:public Node
     virtual void borrowFrom(Node* destNode, Node* parentNode, int keyIndex, SIBLING_DIRECTION d); // 从兄弟结点中借一个键值
     virtual int getChildIndex(KeyType key,int keyIndex)const; //根据键值获取孩子节点指针下标
 
-    private:
+    public:
         //指向孩子节点的指针
         Node* childs[MAX_CHILD];
 };
@@ -94,10 +94,10 @@ class LeafNode
         virtual void clear(); // 清空节点，同时会清空节点所包含的子树节点
         virtual void borrowFrom(Node* destNode, Node* parentNode, int keyIndex, SIBLING_DIRECTION d); // 从兄弟结点中借一个键值
         virtual int getChildIndex(KeyType key,int keyIndex)const; //根据键值获取孩子节点指针下标
-    private:
+    public:
         //指向兄弟节点的指针
         LeafNode* left_next;
         LeafNode* right_next;
         //数据指针，指向数据
-        DataType datas[MAX_LEAF];
+        int datas[MAX_LEAF];
 };
