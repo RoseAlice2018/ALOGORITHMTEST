@@ -1,6 +1,7 @@
 #include <iostream>
 #include <time.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "B+Tree.h"
 
 using namespace BAT;
@@ -37,7 +38,7 @@ int main()
 }
 
 void testBTree() {
-	 BAddTree<int,Entry>tree(1);
+	BAddTree<int,Entry>tree(1);
 	int low, up = 0;
 	do {
 		low = rand() % 100;
@@ -46,10 +47,11 @@ void testBTree() {
 			swap(up, low);
 		}
 	} while (up - low > 1000 || up - low < 20);
-	up = 200; low = 1;
+	up = 20; low = 1;
 	vector<Entry>num;
-	for (int i = low; i < up; ++i) {
-		num.insert(num.end(),Entry(rand()*rand()*rand()%100000000,(float)rand()/rand()));
+	for (int i = low; i < up; ++i)
+	{
+		num.insert(num.end(),Entry(rand()*rand()*rand()%100000,(float)rand()/rand()));
 	}
 	vector<Entry>r;
 	cout << "insert values the fllowing:\n" << endl;
@@ -64,14 +66,15 @@ void testBTree() {
 		if(ok){
 		r.insert(r.end(), num[s]);
 		}
-		else {
+		else 
+		{
 			cout << "\n\n\n inserting the entry had failed:" << it->key() << "\n\n";
 		}
 		num.erase(it);
 	}
 	cout << "\ntree size:\n" << tree.size() << endl;
 	cout << "start  traversal:\n";
- tree.list_traversal(itf);
+ 	tree.list_traversal(itf);
 	cout << endl;
 	cout << "remove randomly:\n\t";
 	int n = 0;
@@ -146,8 +149,9 @@ void testBTree() {
 				swap(up, low);
 			}
 		} while (up - low > 1000 || up - low < 20);
+		up=20,low=1;
 		for (int i = low; i < up; ++i) {
-			num.insert(num.end(), Entry(rand(), (float)rand() / rand()));
+			num.insert(num.end(), Entry(rand()*rand()*rand()%100000, (float)rand() / rand()));
 		}
 		cout << "insert values the fllowing:\n" << endl;
 		while (!num.empty())

@@ -113,7 +113,7 @@ namespace BAT{
             int i=0;
             for(;i<_s;++i)
             {
-                K& tk = v->key[i];
+                K& tK = v->key[i];
                 if(tK > k)break;
             }   
             this->m_hitParentNode = static_cast<BAddTreeNode<K, E>*>(v);
@@ -454,7 +454,7 @@ namespace BAT{
 			}
 		}
 	}
-    }
 }
+
 
 #endif
